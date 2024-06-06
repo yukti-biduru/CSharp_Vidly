@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Vidly_with_Individual_Authentication.Models;
+using Vidly.ViewModels.Manage;
 
-namespace Vidly_with_Individual_Authentication.Controllers
+namespace Vidly.Controllers
 {
     [Authorize]
     public class ManageController : Controller

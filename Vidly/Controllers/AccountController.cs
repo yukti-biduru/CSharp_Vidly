@@ -9,9 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Vidly_with_Individual_Authentication.Models;
+using Vidly.Models;
+using Vidly.ViewModels.Account;
 
-namespace Vidly_with_Individual_Authentication.Controllers
+namespace Vidly.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -152,12 +153,20 @@ namespace Vidly_with_Individual_Authentication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    DrivingLicense = model.DrivingLicense,
+                    Phone = model.Phone
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

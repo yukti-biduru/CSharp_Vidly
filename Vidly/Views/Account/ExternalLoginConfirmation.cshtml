@@ -1,4 +1,4 @@
-﻿@model Vidly_with_Individual_Authentication.Models.ExternalLoginConfirmationViewModel
+﻿@model Vidly.ViewModels.Account.ExternalLoginConfirmationViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -25,6 +25,19 @@
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="row">
+            @Html.LabelFor(m => m.DrivingLicense, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DrivingLicense, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            </div>
+        </div>
+
         <div class="row">
             <div class="offset-md-2 col-md-10">
                 <input type="submit" class="btn btn-outline-dark" value="Register" />

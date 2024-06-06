@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Movies</h1>
+@if (Model.Count() == 0)
+{
+    <h4>There are no movies yet.</h4>
+}
+else
+{
+    <table id="movies" class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-secondary">
+                <th scope="row">
+                    Customers
+                </th>
+                <th scope="row">
+                    Genre
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "genre.name"
+                    }
+                ]
+            });
+        });
+    </script>
+}

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Vidly_with_Individual_Authentication.Startup))]
-namespace Vidly_with_Individual_Authentication
+[assembly: OwinStartupAttribute(typeof(Vidly.Startup))]
+namespace Vidly
 {
     public partial class Startup
     {
